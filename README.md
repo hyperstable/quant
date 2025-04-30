@@ -21,3 +21,15 @@ The adaptive behavior of this rate is as follows:
 2. If the collateral ratio rises above our vault-specific target, we want to decrease the interest rate
 
 The mapping to a range between zero and one can be achieved by using loan-to-value (LTV) values instead of collateral ratios.
+
+## Link ERC20 HyperCore <> HyperEVM
+
+The deploy spot script is a script that deploys the spot contract on HL. It uses the following parameters in an `.env` file:
+
+```bash
+PRIVATE_KEY="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+DEPLOYER="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+TOKEN_ID=1
+CREATION_NONCE=0
+TOKEN_CONTRACT_ADDRES="0xdeadbeefdeadbeefdeadbeefdeadbeefdead"
+```
