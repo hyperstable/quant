@@ -141,4 +141,4 @@ The adaptive interest rate is calculated as follows:
 3. Get the start rate and check if this is the model initialization
 4. If initialization then use static values otherwise calculate the linear adaptation, calculate the point on the curve, and set the new rates
 
-An example implementation in Python can be found [here](interest_rates/adaptive_irm)
+An example implementation in Python can be found [here]([interest_rates/adaptive_irm](https://github.com/hyperstable/quant/blob/main/interest_rates/adaptive_irm/adaptive_irm.ipynb))
