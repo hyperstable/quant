@@ -101,6 +101,23 @@ $$
 e = \frac{u - t}{e_n}
 $$
 
+#### Rate at target
+
+A new rate at target is obtained from the start rate ($$r_s$$) and the linear adaption ($$l_a$$) clamped between minimum ($$r_{min^t}$$) and maximum ($$r_{max^t}$$) rates at target
+
+$$
+r_t = clamp(r_s exp(l_a), r_{min^t}, r_{max^t}).
+$$
+
+and
+
+$$
+l_a = s_a e (t_n - t_{n-1}),
+$$
+
+where $$s_a$$ represents the adjustment speed and $$e$$ the error factor.
+We use the timestamp of the last update ($$t_{n-1}$$) and the current timestamp ($$t_n$$) to obtain a difference in seconds.
+
 #### Adaptive curve
 
 We use the rate at target ($$r_t$$) and the error factor ($$e$$) to calculate points on the curve.
@@ -123,14 +140,6 @@ p = (\theta e + 1) r_t.
 $$
 
 Here, $$\omega$$ represents the steepness of the curve.
-
-#### Rate at target
-
-A new rate at target is obtained from the start rate ($$r_s$$) and the linear adaption ($$l_a$$) clamped between minimum ($$r_{min^t}$$) and maximum ($$r_{max^t}$$) rates at target
-
-$$
-r_t = clamp(r_s exp(l_a), r_{min^t}, r_{max^t}).
-$$
 
 #### Adaptive interest rate
 
