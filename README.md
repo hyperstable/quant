@@ -27,9 +27,5 @@ The mapping to a range between zero and one can be achieved by using loan-to-val
 The deploy spot script is a script that deploys the spot contract on HL. It uses the following parameters in an `.env` file:
 
 ```bash
-PRIVATE_KEY="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
-DEPLOYER="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
-TOKEN_ID=1
-CREATION_NONCE=0
-TOKEN_CONTRACT_ADDRES="0xdeadbeefdeadbeefdeadbeefdeadbeefdead"
+PK="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 ```
