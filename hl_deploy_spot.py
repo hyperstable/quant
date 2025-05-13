@@ -12,7 +12,7 @@ import os
 load_dotenv()
 
 # Define API URL directly since we can't import constants
-main_net = False
+main_net = True
 API_URL = (
     "https://api.hyperliquid.xyz"
     if main_net is True
@@ -26,13 +26,14 @@ wei_decimals_core = 5
 wei_decimals_extra = 18 - wei_decimals_core
 
 DEFAULT_CONTRACT_ADDRESS = Web3.to_checksum_address(
-    "0x0a200360D5f614Aa7C7842fBA9C244B27c8904E4"  # change this to your contract address if you are skipping deploying
+    "0x28245AB01298eaEf7933bC90d35Bd9DbCA5C89DB"  # change this to your contract address if you are skipping deploying
 )
 MNEMONIC = (
     "<YOUR MNEMONIC>"  # Change this to your menomic if you want to use a mnemonic
 )
 USE_MENOMIC = False
 PRIVATE_KEY = os.getenv("PK")  # Change this to your private key otherwise
+# print(f"PRIVATE_KEY: {PRIVATE_KEY}")
 
 # Connect to the JSON-RPC endpoint
 rpc_url = (
@@ -64,15 +65,14 @@ creation_nonce: int
 contract_address = DEFAULT_CONTRACT_ADDRESS
 
 # token creation nonce
-creation_nonce = 446
+creation_nonce = 11
 
-
-TOKEN = 1304  # Token Index in the UI
+TOKEN = 192  # Token Index in the UI
 system_user_extension = f"{TOKEN:x}"
 
 system_address = "0x2" + "0" * (39 - len(system_user_extension)) + system_user_extension
 
-TOTAL_SUPPLY = 10_000_000_000
+TOTAL_SUPPLY = 50_000_000_000
 amount_wei = TOTAL_SUPPLY * (10**wei_decimals_core)  # 100B with 6 wei decimals
 
 # step 1: done
@@ -96,8 +96,10 @@ genesis_action = {
 # Response status code: 200
 # Raw response content: {"status":"ok","response":{"type":"spot","data":1181}}
 # UserGenesis response: {'status': 'ok', 'response': {'type': 'spot', 'data': 1181}}
-# here we wat 1181
-SPOT = 1181  # comes from register spot action
+# here we want 1181
+# Raw response content: {"status":"ok","response":{"type":"spot","data":170}}
+# UserGenesis response: {"status":"ok","response":{"type":"spot","data":170}}
+SPOT = 170  # comes from register spot action
 register_spot = {"type": "spotDeploy", "registerSpot": {"tokens": [TOKEN, 0]}}
 
 # step 4: done
@@ -109,7 +111,7 @@ hyper_liquidity_action = {
     "type": "spotDeploy",
     "registerHyperliquidity": {
         "spot": SPOT,
-        "startPx": "1",
+        "startPx": "0.04",
         "orderSz": "0",
         "nOrders": 0,
     },
@@ -125,7 +127,7 @@ request_evm_contract = {
     },
 }
 
-# step 6: done
+# step 6:
 finalize_action = {
     "type": "finalizeEvmContract",
     "token": TOKEN,
