@@ -22,11 +22,11 @@ API_URL = (
 from hyperliquid.utils.signing import get_timestamp_ms, sign_l1_action
 
 
-wei_decimals_core = 5
+wei_decimals_core = 8
 wei_decimals_extra = 18 - wei_decimals_core
 
 DEFAULT_CONTRACT_ADDRESS = Web3.to_checksum_address(
-    "0x28245AB01298eaEf7933bC90d35Bd9DbCA5C89DB"  # change this to your contract address if you are skipping deploying
+    "0x8fF0dd9f9C40a0d76eF1BcFAF5f98c1610c74Bd8"  # change this to your contract address if you are skipping deploying
 )
 MNEMONIC = (
     "<YOUR MNEMONIC>"  # Change this to your menomic if you want to use a mnemonic
@@ -65,14 +65,14 @@ creation_nonce: int
 contract_address = DEFAULT_CONTRACT_ADDRESS
 
 # token creation nonce
-creation_nonce = 11
+creation_nonce = 0
 
-TOKEN = 192  # Token Index in the UI
+TOKEN = 240  # Token Index in the UI
 system_user_extension = f"{TOKEN:x}"
 
 system_address = "0x2" + "0" * (39 - len(system_user_extension)) + system_user_extension
 
-TOTAL_SUPPLY = 50_000_000_000
+TOTAL_SUPPLY = 88_000_000_000
 amount_wei = TOTAL_SUPPLY * (10**wei_decimals_core)  # 100B with 6 wei decimals
 
 # step 1: done
@@ -99,7 +99,9 @@ genesis_action = {
 # here we want 1181
 # Raw response content: {"status":"ok","response":{"type":"spot","data":170}}
 # UserGenesis response: {"status":"ok","response":{"type":"spot","data":170}}
-SPOT = 170  # comes from register spot action
+# Raw response content: {"status":"ok","response":{"type":"spot","data":171}}
+# UserGenesis response: {"status":"ok","response":{"type":"spot","data":171}}
+SPOT = 171  # comes from register spot action
 register_spot = {"type": "spotDeploy", "registerSpot": {"tokens": [TOKEN, 0]}}
 
 # step 4: done
@@ -111,7 +113,7 @@ hyper_liquidity_action = {
     "type": "spotDeploy",
     "registerHyperliquidity": {
         "spot": SPOT,
-        "startPx": "0.04",
+        "startPx": "1",
         "orderSz": "0",
         "nOrders": 0,
     },
